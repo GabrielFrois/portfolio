@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.cabecalho {
+    display: flex;                        /* Aplica o Flexbox */
+    justify-content: flex-end;             /* Alinha os itens à direita */
+    align-items: center;                   /* Alinha os itens verticalmente no centro */
+    background-color: #18212D;
+    height: 50px;
+    color: #39B4A8;
+    padding-right: 20px;                   /* Ajuste o padding à direita para não deixar o conteúdo colado */
+    position: sticky;
+}
+
+nav ul {
+    list-style: none;                     /* Remove as bolinhas da lista */
+    padding: 0;                           /* Remove qualquer padding interno da lista */
+    margin: 0;                            /* Remove qualquer margem externa da lista */
+    display: flex;                         /* Torna a lista horizontal */
+}
+
+nav li {
+    margin-left: 45px;                     /* Espaçamento entre os itens */
+}
+
+nav a {
+    color: #39B4A8;
+    text-decoration: none;                 /* Remove o sublinhado dos links */
+    font-size: 25px;                       /* Tamanho da fonte */
+}
+
+nav a:hover {
+    text-decoration: underline;            /* Adiciona um sublinhado quando o link é passado por cima */
+}
+
+body{
+    background-color: #1D2E47;
+}
+
+.home{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15%;
+    margin-top: 100px;
+}
+
+.home p{
+    color: #39B4A8;
+}
+
+.home .botao-cv{
+    background-color: #18212D;
+    color: white;
+    width: 130px;
+    height: 30px;
+    border: solid 2px #8891B0;
+    border-radius: 25px;
+}
