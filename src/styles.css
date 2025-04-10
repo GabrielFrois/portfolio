@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    /*font-family:"Montserrat", sans-serif;*/
 }
 
 .cabecalho {
@@ -39,24 +40,98 @@ body{
     background-color: #1D2E47;
 }
 
+
 .home{
+    font-family: 'Fira Code', monospace;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 15%;
-    margin-top: 100px;
+    margin-left: 40%;
+    margin-top: 25vh;
 }
 
-.home p{
+
+.home p {
     color: #39B4A8;
+    font-family: 'Fira Code', monospace;  /* Garantir que a fonte Fira Code está sendo aplicada aqui também */
+    font-size: 35px;
 }
+
+.hello-world {
+    font-family: 'Fira Code', monospace;  /* Garantir que está aplicando a fonte correta */
+    font-size: 35px;
+    color: #39B4A8;
+    display: inline-block;
+    position: relative;
+}
+
+.cursor {
+    position: absolute;
+    right: 0;
+    animation: blink 0.7s step-end infinite;
+    color: #fff;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+
+.home .nome-titulo {
+    color: #fff;
+    font-family:"Montserrat", sans-serif;
+    font-size: 70px;
+}
+
+.home .subtitulo {
+    color: #fff;
+    font-family:"Montserrat", sans-serif;
+    font-size: 40px;
+}
+
 
 .home .botao-cv{
     background-color: #18212D;
+    font-size: 1.7vh;
     color: white;
-    width: 130px;
-    height: 30px;
-    border: solid 2px #8891B0;
+    width: 15vh;
+    height: 4vh;
+    border: solid 2px #39B4A8;
     border-radius: 25px;
+    margin-top: 5px;
+    margin-left: 40vh;
+}
+
+.sobre {
+    margin-top: 50vh;
+    font-family: 'Fira Code', monospace;
+    color: #39B4A8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center; /* Centraliza o texto dentro do elemento */
+}
+
+.titulo{
+    color: #39B4A8;
+    font-size: 45px;
+    margin-top: 3vh;
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center; /* Centraliza o texto dentro do elemento */
+}
+
+.sobre-texto {
+    color: #fff; /* Se desejar dar um toque de cor ao texto */
+    font-size: 25px; /* Ajuste o tamanho da fonte, se necessário */
+    max-width: 65%; /* Limita a largura do texto para não ficar esticado demais */
+    line-height: 1.6; /* Aumenta o espaçamento entre as linhas para melhorar a legibilidade */
+    display: flex;
+    text-align: center;
 }
