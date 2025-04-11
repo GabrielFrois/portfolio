@@ -225,48 +225,88 @@ nav a:hover {
 }
 
 
+
+
 /*Estilização de Projetos*/
 .projeto {
-    display: flex; /* Usando Flexbox para alinhar os itens em linha */
-    justify-content: space-between; /* Espaçamento entre os itens */
-    align-items: center; /* Alinha os itens verticalmente no centro */
-    margin-top: 20px;
-    font-family: 'Fira Code', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    gap: 40px;
+    
+    /* Transição suave */
+    transition: transform 0.3s ease;
 }
 
-.descricao {
-    max-width: 30%; /* Define um tamanho máximo para a descrição */
-    margin-right: 20px; /* Espaço entre a descrição e a imagem */
+/* Efeito de zoom no hover */
+.projeto:hover {
+    transform: scale(1.03);
 }
 
-.imagem img {
-    max-width: 10%; /* Imagem ocupa toda a largura possível, sem ultrapassar o container */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 8px; /* Adiciona bordas arredondadas à imagem */
-}
-
-/* Estilos adicionais */
+/* Título da seção */
 .titulo {
+    text-align: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 48px;
     color: #39B4A8;
-    font-size: 45px;
-    margin-top: 3vh;
-}
-
-.nome-projeto {
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
     font-weight: bold;
-    color: white;
+    margin-bottom: 60px;
 }
 
-.descricao-projeto {
+/* Container do projeto */
+.projeto {
     display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 18px;
-    line-height: 1.6;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    gap: 40px;
 }
+
+/* Texto à esquerda */
+.projeto .texto {
+    flex: 1;
+    text-align: center;
+}
+
+/* Nome do projeto centralizado */
+.nome-projeto {
+    font-family: 'Fira Code', monospace;
+    font-size: 32px;
+    color: #39B4A8;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Descrição centralizada */
+.descricao-projeto {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Imagem à direita */
+.projeto .imagem {
+    flex: 1;
+    text-align: right;
+}
+
+.projeto .imagem img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #39B4A8;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(57, 180, 168, 0.2);
+}
+
+
 
 
 
