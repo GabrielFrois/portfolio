@@ -235,7 +235,7 @@ nav a:hover {
 }
 
 .descricao {
-    max-width: 60%; /* Define um tamanho máximo para a descrição */
+    max-width: 30%; /* Define um tamanho máximo para a descrição */
     margin-right: 20px; /* Espaço entre a descrição e a imagem */
 }
 
@@ -253,12 +253,16 @@ nav a:hover {
 }
 
 .nome-projeto {
+    display: flex;
+    justify-content: center;
     font-size: 24px;
     font-weight: bold;
     color: white;
 }
 
 .descricao-projeto {
+    display: flex;
+    justify-content: center;
     color: white;
     font-size: 18px;
     line-height: 1.6;
