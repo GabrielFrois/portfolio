@@ -4,7 +4,19 @@
     padding: 0;
 }
 
-/* Estilização da barra de navegação (cabeçalho) */
+body {
+    background-color: #1D2E47;
+}
+
+
+/* Estilização do cabeçalho */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #18212D;
+}
+
 .cabecalho {
     display: flex;
     justify-content: flex-end;
@@ -13,7 +25,6 @@
     height: 50px;
     color: #39B4A8;
     padding-right: 20px;
-    position: sticky;
 }
 
 nav ul {
@@ -37,10 +48,8 @@ nav a:hover {
     text-decoration: underline;
 }
 
-body {
-    background-color: #1D2E47;
-}
 
+/* Estilização do Home */
 .home {
     font-family: 'Fira Code', monospace;
     color: white;
@@ -105,6 +114,8 @@ body {
     margin-left: 40vh;
 }
 
+
+/*Estilização do Sobre Mim*/
 .sobre {
     margin-top: 50vh;
     font-family: 'Fira Code', monospace;
@@ -133,6 +144,8 @@ body {
     text-align: center;
 }
 
+
+/*Estilização de Habilidades*/
 /* Grid de habilidades (ícones) */
 .skills-grid {
     display: grid;
@@ -212,6 +225,44 @@ body {
 }
 
 
+/*Estilização de Projetos*/
+.projeto {
+    display: flex; /* Usando Flexbox para alinhar os itens em linha */
+    justify-content: space-between; /* Espaçamento entre os itens */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    margin-top: 20px;
+    font-family: 'Fira Code', monospace;
+}
+
+.descricao {
+    max-width: 60%; /* Define um tamanho máximo para a descrição */
+    margin-right: 20px; /* Espaço entre a descrição e a imagem */
+}
+
+.imagem img {
+    max-width: 10%; /* Imagem ocupa toda a largura possível, sem ultrapassar o container */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 8px; /* Adiciona bordas arredondadas à imagem */
+}
+
+/* Estilos adicionais */
+.titulo {
+    color: #39B4A8;
+    font-size: 45px;
+    margin-top: 3vh;
+}
+
+.nome-projeto {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.descricao-projeto {
+    color: white;
+    font-size: 18px;
+    line-height: 1.6;
+}
 
 
 
@@ -220,30 +271,52 @@ body {
 
 
 
+/*Estilização de Contato*/
 .botoes-container {
     display: flex;                    /* Usa Flexbox para alinhar os itens */
     justify-content: center;          /* Centraliza os botões horizontalmente */
-    gap: 2vh;                          /* Espaçamento entre os botões */
+    gap: 4vh;                          /* Espaçamento entre os botões */
     margin-top: 20px;                  /* Espaçamento superior para separar do conteúdo acima */
 }
 
 .botao-contato {
-    text-decoration: none;            /* Remove o sublinhado */
-    background-color: #18212D;        /* Cor de fundo */
-    color: #fff;                      /* Cor do texto */
-    font-size: 20px;                   /* Tamanho da fonte */
-    margin-bottom: 2vh;                /* Espaçamento inferior */
-    border: 2px solid #39B4A8;        /* Borda */
-    border-bottom: 5px solid #39B4A8; /* Borda inferior mais grossa */
-    border-radius: 0 30px 0 0;        /* Bordas arredondadas */
-    height: 5vh;                      /* Altura do botão */
-    width: 15vh;                      /* Largura do botão */
-    display: inline-block;            /* Faz o link se comportar como um botão */
-    cursor: pointer;                  /* Alteração do cursor para indicar que é clicável */
-    transition: transform 0.2s ease;   /* Animação suave */
+    background-color: #18212D;
+    border: 2px solid #39B4A8;
+    border-bottom: 5px solid #39B4A8;
+    border-radius: 0 30px 0 0;
+    padding: 20px;
+    height: 60px;
+    width: 140px;
+    margin-bottom: 5vh;
     display: flex;
+    flex-direction: column;         /* Coloca imagem em cima e texto embaixo */
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;         /* Remove o sublinhado do link */
+    color: white;                  /* Herda a cor correta */
+    text-align: center;            /* Centraliza o texto */
+}
+
+.botao-contato img {
+    max-height: 4vh;
+    margin-bottom: 5px;           /* Espaço entre imagem e texto */
+}
+
+.botao-contato span {
+    font-size: 16px;
+    text-align: center;
+    color: inherit;                /* Garante que herda a cor branca */
+    font-family: "Montserrat", sans-serif;
+}
+
+.botao-contato a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .botao-contato:hover {
