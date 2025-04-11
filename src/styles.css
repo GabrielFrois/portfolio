@@ -1,47 +1,47 @@
+/* Remove margens e paddings padrões de todos os elementos */
 * {
     margin: 0;
     padding: 0;
-    /*font-family:"Montserrat", sans-serif;*/
 }
 
+/* Estilização da barra de navegação (cabeçalho) */
 .cabecalho {
-    display: flex;                        /* Aplica o Flexbox */
-    justify-content: flex-end;             /* Alinha os itens à direita */
-    align-items: center;                   /* Alinha os itens verticalmente no centro */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     background-color: #18212D;
     height: 50px;
     color: #39B4A8;
-    padding-right: 20px;                   /* Ajuste o padding à direita para não deixar o conteúdo colado */
+    padding-right: 20px;
     position: sticky;
 }
 
 nav ul {
-    list-style: none;                     /* Remove as bolinhas da lista */
-    padding: 0;                           /* Remove qualquer padding interno da lista */
-    margin: 0;                            /* Remove qualquer margem externa da lista */
-    display: flex;                         /* Torna a lista horizontal */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
 nav li {
-    margin-left: 45px;                     /* Espaçamento entre os itens */
+    margin-left: 45px;
 }
 
 nav a {
     color: #39B4A8;
-    text-decoration: none;                 /* Remove o sublinhado dos links */
-    font-size: 25px;                       /* Tamanho da fonte */
+    text-decoration: none;
+    font-size: 25px;
 }
 
 nav a:hover {
-    text-decoration: underline;            /* Adiciona um sublinhado quando o link é passado por cima */
+    text-decoration: underline;
 }
 
-body{
+body {
     background-color: #1D2E47;
 }
 
-
-.home{
+.home {
     font-family: 'Fira Code', monospace;
     color: white;
     display: flex;
@@ -51,15 +51,14 @@ body{
     margin-top: 25vh;
 }
 
-
 .home p {
     color: #39B4A8;
-    font-family: 'Fira Code', monospace;  /* Garantir que a fonte Fira Code está sendo aplicada aqui também */
+    font-family: 'Fira Code', monospace;
     font-size: 35px;
 }
 
 .hello-world {
-    font-family: 'Fira Code', monospace;  /* Garantir que está aplicando a fonte correta */
+    font-family: 'Fira Code', monospace;
     font-size: 35px;
     color: #39B4A8;
     display: inline-block;
@@ -82,21 +81,19 @@ body{
     }
 }
 
-
 .home .nome-titulo {
     color: #fff;
-    font-family:"Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 70px;
 }
 
 .home .subtitulo {
     color: #fff;
-    font-family:"Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 40px;
 }
 
-
-.home .botao-cv{
+.home .botao-cv {
     background-color: #18212D;
     font-size: 1.7vh;
     color: white;
@@ -115,23 +112,140 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Centraliza horizontalmente */
-    text-align: center; /* Centraliza o texto dentro do elemento */
+    align-items: center;
+    text-align: center;
 }
 
-.titulo{
+.titulo {
     color: #39B4A8;
     font-size: 45px;
     margin-top: 3vh;
-    align-items: center; /* Centraliza horizontalmente */
-    text-align: center; /* Centraliza o texto dentro do elemento */
+    align-items: center;
+    text-align: center;
 }
 
 .sobre-texto {
-    color: #fff; /* Se desejar dar um toque de cor ao texto */
-    font-size: 25px; /* Ajuste o tamanho da fonte, se necessário */
-    max-width: 65%; /* Limita a largura do texto para não ficar esticado demais */
-    line-height: 1.6; /* Aumenta o espaçamento entre as linhas para melhorar a legibilidade */
+    color: #fff;
+    font-size: 25px;
+    max-width: 65%;
+    line-height: 1.6;
     display: flex;
     text-align: center;
+}
+
+/* Grid de habilidades (ícones) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1vh 7vh;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Cartão de cada habilidade */
+.skill-card {
+    margin-top: 2vh;
+    background-color: #18212D;
+    border: 2px solid #39B4A8;
+    border-bottom: 8px solid #39B4A8;
+    border-radius: 0 30px 0 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: scale(1.10);
+}
+
+.skill-card:hover img {
+    filter: brightness(0.5);
+    transition: filter 0.2s ease;
+}
+
+.skill-card img {
+    max-height: 95%;
+    transition: filter 0.2s ease;
+}
+
+/* Exibe texto sobre a imagem ao passar o mouse */
+.skill-card:hover::after {
+    content: attr(data-name) "\A" "Nível: " attr(data-level-display);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    text-align: center;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    white-space: pre-wrap; /* Permite a quebra de linha */
+    line-height: 1.6; /* Adiciona espaçamento entre as linhas */
+}
+
+/* Estilo para as bolinhas de nível */
+.skill-card[data-level="1"]:hover::after {
+    content: attr(data-name) "\A" "Nível:" "\A" "●○○"; /* 1 bolinha preenchida, 2 vazias */
+}
+
+.skill-card[data-level="2"]:hover::after {
+    content: attr(data-name) "\A" "Nível:" "\A" "●●○"; /* 2 bolinhas preenchidas, 1 vazia */
+}
+
+.skill-card[data-level="3"]:hover::after {
+    content: attr(data-name) "\A" "Nível:" "\A" "●●●"; /* 3 bolinhas preenchidas */
+}
+
+/* Tamanho das bolinhas */
+.skill-card::after {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 25%; /* Ajuste o tamanho das bolinhas */
+}
+
+
+
+
+
+
+
+
+
+
+.botoes-container {
+    display: flex;                    /* Usa Flexbox para alinhar os itens */
+    justify-content: center;          /* Centraliza os botões horizontalmente */
+    gap: 2vh;                          /* Espaçamento entre os botões */
+    margin-top: 20px;                  /* Espaçamento superior para separar do conteúdo acima */
+}
+
+.botao-contato {
+    text-decoration: none;            /* Remove o sublinhado */
+    background-color: #18212D;        /* Cor de fundo */
+    color: #fff;                      /* Cor do texto */
+    font-size: 20px;                   /* Tamanho da fonte */
+    margin-bottom: 2vh;                /* Espaçamento inferior */
+    border: 2px solid #39B4A8;        /* Borda */
+    border-bottom: 5px solid #39B4A8; /* Borda inferior mais grossa */
+    border-radius: 0 30px 0 0;        /* Bordas arredondadas */
+    height: 5vh;                      /* Altura do botão */
+    width: 15vh;                      /* Largura do botão */
+    display: inline-block;            /* Faz o link se comportar como um botão */
+    cursor: pointer;                  /* Alteração do cursor para indicar que é clicável */
+    transition: transform 0.2s ease;   /* Animação suave */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao-contato:hover {
+    transform: scale(1.10);           /* Efeito de ampliação no hover */
 }
