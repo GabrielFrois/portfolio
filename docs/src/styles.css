@@ -124,13 +124,6 @@ nav a:hover {
     text-align: center;
 }
 
-.titulo {
-    color: #39B4A8;
-    font-size: 45px;
-    margin-top: 3vh;
-    align-items: center;
-    text-align: center;
-}
 
 .sobre-texto {
     color: #fff;
@@ -237,8 +230,8 @@ nav a:hover {
     font-family: 'Fira Code', monospace;
     font-size: 48px;
     color: #39B4A8;
-    font-weight: bold;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .tipo-projeto {
@@ -274,7 +267,12 @@ nav a:hover {
     text-align: right;
     position: relative;
     display: inline-block;
+    border: 2px solid #39B4A8;
+    border-radius: 15px;
+    overflow: hidden; /* Garante que o conteúdo da imagem fique dentro das bordas arredondadas */
+    display: flex; /* Garante que a imagem ocupe todo o espaço disponível */
 }
+
 
 .projeto .imagem::after {
     content: '';
@@ -283,7 +281,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Preto translúcido */
+    background-color: rgba(0, 0, 0, 0.7); /* Preto translúcido */
     opacity: 0; /* Inicialmente invisível */
     transition: opacity 0.3s ease; /* Suaviza a transição */
     z-index: 1; /* Coloca o overlay acima da imagem */
@@ -310,8 +308,8 @@ nav a:hover {
 }
 
 .tools-icons img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 .projeto .imagem img {
