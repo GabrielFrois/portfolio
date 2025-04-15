@@ -8,7 +8,6 @@ body {
     background-color: #1D2E47;
 }
 
-
 /* Estilização do cabeçalho */
 header {
     position: sticky;
@@ -47,7 +46,6 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
-
 
 /* Estilização do Home */
 .home {
@@ -114,8 +112,7 @@ nav a:hover {
     margin-left: 40vh;
 }
 
-
-/*Estilização do Sobre Mim*/
+/* Estilização do Sobre Mim */
 .sobre {
     margin-top: 50vh;
     font-family: 'Fira Code', monospace;
@@ -144,9 +141,7 @@ nav a:hover {
     text-align: center;
 }
 
-
-/*Estilização de Habilidades*/
-/* Grid de habilidades (ícones) */
+/* Estilização de Habilidades */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -155,7 +150,6 @@ nav a:hover {
     margin: 0 auto;
 }
 
-/* Cartão de cada habilidade */
 .skill-card {
     margin-top: 2vh;
     background-color: #18212D;
@@ -186,7 +180,6 @@ nav a:hover {
     transition: filter 0.2s ease;
 }
 
-/* Exibe texto sobre a imagem ao passar o mouse */
 .skill-card:hover::after {
     content: attr(data-name) "\A" "Nível: " attr(data-level-display);
     position: absolute;
@@ -200,34 +193,29 @@ nav a:hover {
     z-index: 2;
     opacity: 1;
     transition: opacity 0.2s ease;
-    white-space: pre-wrap; /* Permite a quebra de linha */
-    line-height: 1.6; /* Adiciona espaçamento entre as linhas */
+    white-space: pre-wrap;
+    line-height: 1.6;
 }
 
-/* Estilo para as bolinhas de nível */
 .skill-card[data-level="1"]:hover::after {
-    content: attr(data-name) "\A" "Nível:" "\A" "●○○"; /* 1 bolinha preenchida, 2 vazias */
+    content: attr(data-name) "\A" "Nível:" "\A" "●○○";
 }
 
 .skill-card[data-level="2"]:hover::after {
-    content: attr(data-name) "\A" "Nível:" "\A" "●●○"; /* 2 bolinhas preenchidas, 1 vazia */
+    content: attr(data-name) "\A" "Nível:" "\A" "●●○";
 }
 
 .skill-card[data-level="3"]:hover::after {
-    content: attr(data-name) "\A" "Nível:" "\A" "●●●"; /* 3 bolinhas preenchidas */
+    content: attr(data-name) "\A" "Nível:" "\A" "●●●";
 }
 
-/* Tamanho das bolinhas */
 .skill-card::after {
     display: inline-block;
     margin-top: 10px;
-    font-size: 25%; /* Ajuste o tamanho das bolinhas */
+    font-size: 25%;
 }
 
-
-
-
-/*Estilização de Projetos*/
+/* Estilização de Projetos */
 .projeto {
     display: flex;
     justify-content: space-between;
@@ -237,17 +225,13 @@ nav a:hover {
     max-width: 1200px;
     margin: 0 auto 60px auto;
     gap: 40px;
-    
-    /* Transição suave */
     transition: transform 0.3s ease;
 }
 
-/* Efeito de zoom no hover */
 .projeto:hover {
     transform: scale(1.03);
 }
 
-/* Título da seção */
 .titulo {
     text-align: center;
     font-family: 'Fira Code', monospace;
@@ -264,24 +248,11 @@ nav a:hover {
     color: #39B4A8;
 }
 
-/* Container do projeto */
-.projeto {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px 0;
-    max-width: 1200px;
-    margin: 0 auto 60px auto;
-    gap: 40px;
-}
-
-/* Texto à esquerda */
 .projeto .texto {
     flex: 1;
     text-align: center;
 }
 
-/* Nome do projeto centralizado */
 .nome-projeto {
     font-family: 'Fira Code', monospace;
     font-size: 32px;
@@ -290,7 +261,6 @@ nav a:hover {
     text-align: center;
 }
 
-/* Descrição centralizada */
 .descricao-projeto {
     font-family: "Montserrat", sans-serif;
     font-size: 18px;
@@ -299,57 +269,73 @@ nav a:hover {
     text-align: center;
 }
 
-/* Imagem à direita */
 .projeto .imagem {
     flex: 1;
     text-align: right;
+    position: relative;
+    display: inline-block;
+}
+
+.tools-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    display: flex;
+    gap: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.projeto .imagem:hover .tools-icons {
+    opacity: 1;
+}
+
+.tools-icons img {
+    width: 30px;
+    height: 30px;
 }
 
 .projeto .imagem img {
     max-width: 100%;
     height: auto;
-    border: 2px solid #39B4A8;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(57, 180, 168, 0.2);
 }
 
 /* Estilo para o modal */
 .modal {
-    display: none; /* Inicialmente escondido */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
-    justify-content: center;  /* Centraliza o conteúdo horizontalmente */
-    align-items: center;      /* Centraliza o conteúdo verticalmente */
-    z-index: 1000;            /* Coloca o modal acima de outros conteúdos */
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-/* Modal visível */
 .modal.ativo {
-    display: flex; /* Exibe o modal quando a classe 'ativo' for adicionada */
+    display: flex;
 }
 
-/* Estilo para o conteúdo do modal */
 .modal-conteudo {
     position: relative;
     display: flex;
-    justify-content: center; /* Centraliza a imagem horizontalmente */
-    align-items: center;     /* Centraliza a imagem verticalmente */
-    padding: 20px;           /* Espaçamento interno */
-    border-radius: 10px;     /* Bordas arredondadas */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-/* Estilo da imagem dentro do modal */
 .imagem-modal {
-    max-width: 90%;    /* Limita a largura da imagem */
-    max-height: 90%;   /* Limita a altura da imagem */
-    object-fit: contain; /* Mantém a proporção da imagem e evita que ela seja cortada */
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
 }
 
-/* Botão de fechar no modal */
 .fechar {
     position: absolute;
     top: 10px;
@@ -361,21 +347,12 @@ nav a:hover {
     z-index: 10;
 }
 
-
-
-
-
-
-
-
-
-
-/*Estilização de Contato*/
+/* Estilização de Contato */
 .botoes-container {
-    display: flex;                    /* Usa Flexbox para alinhar os itens */
-    justify-content: center;          /* Centraliza os botões horizontalmente */
-    gap: 4vh;                          /* Espaçamento entre os botões */
-    margin-top: 20px;                  /* Espaçamento superior para separar do conteúdo acima */
+    display: flex;
+    justify-content: center;
+    gap: 4vh;
+    margin-top: 20px;
 }
 
 .botao-contato {
@@ -388,25 +365,24 @@ nav a:hover {
     width: 140px;
     margin-bottom: 5vh;
     display: flex;
-    flex-direction: column;         /* Coloca imagem em cima e texto embaixo */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: transform 0.2s ease;
-    text-decoration: none;         /* Remove o sublinhado do link */
-    color: white;                  /* Herda a cor correta */
-    text-align: center;            /* Centraliza o texto */
+    text-decoration: none;
+    color: white;
+    text-align: center;
 }
 
 .botao-contato img {
     max-height: 4vh;
-    margin-bottom: 5px;           /* Espaço entre imagem e texto */
+    margin-bottom: 5px;
 }
 
 .botao-contato span {
     font-size: 16px;
-    text-align: center;
-    color: inherit;                /* Garante que herda a cor branca */
+    color: inherit;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -419,5 +395,5 @@ nav a:hover {
 }
 
 .botao-contato:hover {
-    transform: scale(1.10);           /* Efeito de ampliação no hover */
+    transform: scale(1.10);
 }
