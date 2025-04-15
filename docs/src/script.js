@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
     typeWriter();
 });
 
-
 document.addEventListener('DOMContentLoaded', function () {
     // Função para abrir o modal
     function abrirModal(imgElement) {
@@ -57,5 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const fecharBtn = document.querySelector('.fechar');
     fecharBtn.addEventListener('click', fecharModal); // Fecha o modal ao clicar no botão de fechar
 });
+
 
 
