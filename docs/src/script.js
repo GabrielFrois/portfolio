@@ -1,61 +1,194 @@
 document.addEventListener('DOMContentLoaded', function () {
+    typeWriter();
+    renderizarProjetosAcademicos();
+    renderizarProjetosPessoais();
+    configurarModal();
+});
+
+/* ----------- Typewriter (Hello World, I'm) ----------- */
+function typeWriter() {
     const text = "Hello World, I'm";
-    const element = document.querySelector('.typed-text'); // O span que conterá o texto
-    const cursor = document.querySelector('.cursor'); // O cursor piscando
+    const element = document.querySelector('.typed-text');
+    const cursor = document.querySelector('.cursor');
     let index = 0;
 
-    function typeWriter() {
+    function escrever() {
         if (index < text.length) {
-            element.innerHTML += text.charAt(index); // Digita uma letra
+            element.innerHTML += text.charAt(index);
             index++;
-
-            // A cada nova letra, coloca o cursor no final do texto
-            cursor.style.left = `${element.offsetWidth}px`; 
-
-            setTimeout(typeWriter, 250); // Ajuste a velocidade da digitação
+            cursor.style.left = `${element.offsetWidth}px`;
+            setTimeout(escrever, 250);
         }
     }
 
-    typeWriter();
-});
+    escrever();
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Função para abrir o modal
-    function abrirModal(imgElement) {
-        const modal = document.getElementById("imagemModal");
-        const modalImg = document.getElementById("imgModal");
+/* ----------- Dados dos Projetos ----------- */
+const projetosAcademicos = [
+    {
+        nome: "Capy Scrum",
+        descricao: `Desenvolvido o site de um curso interativo sobre a metodologia Scrum, cobrindo seus princípios, práticas e papel dos membros da equipe. 
+        O curso inclui materiais teóricos, atividades práticas e avaliações para garantir a compreensão dos participantes.
 
-        // Mostrar o modal
-        modal.classList.add("ativo"); // Adiciona a classe 'ativo' para exibir o modal
-        modalImg.src = imgElement.src; // Configura a imagem no modal com a imagem clicada
+        Projeto desenvolvido em grupo para a ABP do primeiro semestre do curso Desenvolvimento de Software Multiplataforma na Fatec.`,
+        imagem: "./src/img/capscrum1.PNG",
+        tecnologias: [
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain-wordmark.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain-wordmark.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
+        ]
+    },
+    {
+        nome: "Ignis",
+        descricao: `O projeto Ignis é uma plataforma web com o objetivo de facilitar o acesso a informações sobre queimadas e incêndios florestais. O sistema utiliza dados públicos do Programa Queimadas – INPE para fornecer informações detalhadas sobre focos de calor, risco de fogo e áreas queimadas em diferentes regiões do Brasil.`,
+        imagem: "./src/img/ignis.PNG",
+        tecnologias: [
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-plain.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain-wordmark.svg"
+        ]
     }
+];
 
-    // Função para fechar o modal
-    function fecharModal() {
-        const modal = document.getElementById("imagemModal");
-        modal.classList.remove("ativo"); // Remove a classe 'ativo' para esconder o modal
+const projetosPessoais = [
+    {
+        nome: "Logo Ali",
+        descricao: `Logo Ali é um blog criado para funcionar como um diário de viagem, no qual compartilhei as experiências da minha primeira jornada. Desenvolvi este projeto com o objetivo de aprimorar minhas habilidades e, ao mesmo tempo, registrar e lembrar cada momento dessa experiência única.`,
+        imagem: "./src/img/logoali.PNG",
+        tecnologias: [
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain-wordmark.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain-wordmark.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
+        ]
     }
+];
 
-    // Adiciona eventos de click nas imagens da galeria
-    const imagens = document.querySelectorAll('.imagem img');
-    imagens.forEach(imagem => {
-        imagem.addEventListener('click', function () {
-            abrirModal(imagem); // Chama a função abrirModal ao clicar na imagem
-        });
+/* ----------- Renderização Dinâmica de Projetos ----------- */
+function renderizarProjetosAcademicos() {
+    const container = document.getElementById("projetos-academicos-container");
+
+    projetosAcademicos.forEach((projeto, index) => {
+        const projetoDiv = document.createElement("div");
+        projetoDiv.className = "projeto";
+
+        // Título centralizado acima
+        const titulo = document.createElement("p");
+        titulo.className = "nome-projeto";
+        titulo.innerText = projeto.nome;
+        projetoDiv.appendChild(titulo);
+
+        // Container que vai alternar imagem/texto
+        const contentDiv = document.createElement("div");
+        contentDiv.className = "projeto-content";
+
+        const imagem = document.createElement("div");
+        imagem.className = "projeto-imagem";
+        imagem.innerHTML = `
+            <img src="${projeto.imagem}" alt="${projeto.nome}">
+            <div class="tools-icons">
+                ${projeto.tecnologias.map(tech => `<img src="${tech}" alt="Tech">`).join("")}
+            </div>
+        `;
+
+        const texto = document.createElement("div");
+        texto.className = "projeto-texto";
+        texto.innerText = projeto.descricao;
+
+        // Alterna layout com base na paridade do índice
+        if (index % 2 === 0) {
+            contentDiv.appendChild(texto);
+            contentDiv.appendChild(imagem);
+        } else {
+            contentDiv.appendChild(imagem);
+            contentDiv.appendChild(texto);
+        }
+
+        projetoDiv.appendChild(contentDiv);
+        container.appendChild(projetoDiv);
     });
 
-    // Evento para fechar o modal ao clicar fora da imagem
+    configurarEventosImagens(); // Aplica evento de modal
+}
+
+function renderizarProjetosPessoais() {
+    const container = document.getElementById("projetos-pessoais-container");
+
+    projetosPessoais.forEach((projeto, index) => {
+        const projetoDiv = document.createElement("div");
+        projetoDiv.className = "projeto";
+
+        // Título centralizado acima
+        const titulo = document.createElement("p");
+        titulo.className = "nome-projeto";
+        titulo.innerText = projeto.nome;
+        projetoDiv.appendChild(titulo);
+
+        // Container que vai alternar imagem/texto
+        const contentDiv = document.createElement("div");
+        contentDiv.className = "projeto-content";
+
+        const imagem = document.createElement("div");
+        imagem.className = "projeto-imagem";
+        imagem.innerHTML = `
+            <img src="${projeto.imagem}" alt="${projeto.nome}">
+            <div class="tools-icons">
+                ${projeto.tecnologias.map(tech => `<img src="${tech}" alt="Tech">`).join("")}
+            </div>
+        `;
+
+        const texto = document.createElement("div");
+        texto.className = "projeto-texto";
+        texto.innerText = projeto.descricao;
+
+        // Alterna layout com base na paridade do índice
+        if (index % 2 === 0) {
+            contentDiv.appendChild(texto);
+            contentDiv.appendChild(imagem);
+        } else {
+            contentDiv.appendChild(imagem);
+            contentDiv.appendChild(texto);
+        }
+
+        projetoDiv.appendChild(contentDiv);
+        container.appendChild(projetoDiv);
+    });
+
+    configurarEventosImagens(); // Aplica evento de modal
+}
+
+/* ----------- Modal de Imagem ----------- */
+function configurarModal() {
     const modal = document.getElementById("imagemModal");
+    const fecharBtn = document.querySelector('.fechar');
+
     modal.addEventListener('click', function (e) {
         if (e.target === modal) {
-            fecharModal(); // Fecha o modal se clicar fora da imagem
+            fecharModal();
         }
     });
 
-    // Evento para fechar o modal com o botão de fechar
-    const fecharBtn = document.querySelector('.fechar');
-    fecharBtn.addEventListener('click', fecharModal); // Fecha o modal ao clicar no botão de fechar
-});
+    fecharBtn.addEventListener('click', fecharModal);
+}
 
+function configurarEventosImagens() {
+    const imagens = document.querySelectorAll('.projeto-imagem img');
+    imagens.forEach(imagem => {
+        imagem.addEventListener('click', function () {
+            abrirModal(imagem);
+        });
+    });
+}
 
+function abrirModal(imgElement) {
+    const modal = document.getElementById("imagemModal");
+    const modalImg = document.getElementById("imgModal");
 
+    modal.classList.add("ativo");
+    modalImg.src = imgElement.src;
+}
+
+function fecharModal() {
+    const modal = document.getElementById("imagemModal");
+    modal.classList.remove("ativo");
+}

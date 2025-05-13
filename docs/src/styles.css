@@ -134,13 +134,16 @@ nav a:hover {
     text-align: center;
 }
 
-/* Estilização de Habilidades */
+
+/* Cartão de cada habilidade */
 .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 1vh 7vh;
-    max-width: 800px;
-    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre as skill cards */
+    margin-top: 3vh;
+    margin-right: 60vh;
+    margin-left: 60vh;
 }
 
 .skill-card {
@@ -173,6 +176,7 @@ nav a:hover {
     transition: filter 0.2s ease;
 }
 
+/* Exibe texto sobre a imagem ao passar o mouse */
 .skill-card:hover::after {
     content: attr(data-name) "\A" "Nível: " attr(data-level-display);
     position: absolute;
@@ -186,10 +190,31 @@ nav a:hover {
     z-index: 2;
     opacity: 1;
     transition: opacity 0.2s ease;
-    white-space: pre-wrap;
-    line-height: 1.6;
+    white-space: pre-wrap; /* Permite a quebra de linha */
+    line-height: 1.6; /* Adiciona espaçamento entre as linhas */
 }
 
+/* Estilo para as bolinhas de nível */
+.skill-card[data-level="1"]:hover::after {
+    content: attr(data-name) "\A" "Nível:" "\A" "●○○"; /* 1 bolinha preenchida, 2 vazias */
+}
+
+.skill-card[data-level="2"]:hover::after {
+    content: attr(data-name) "\A" "Nível:" "\A" "●●○"; /* 2 bolinhas preenchidas, 1 vazia */
+}
+
+.skill-card[data-level="3"]:hover::after {
+    content: attr(data-name) "\A" "Nível:" "\A" "●●●"; /* 3 bolinhas preenchidas */
+}
+
+/* Tamanho das bolinhas */
+.skill-card::after {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 25%; /* Ajuste o tamanho das bolinhas */
+}
+
+/* Definições para o nível 1, 2 e 3 das habilidades */
 .skill-card[data-level="1"]:hover::after {
     content: attr(data-name) "\A" "Nível:" "\A" "●○○";
 }
@@ -206,20 +231,136 @@ nav a:hover {
     display: inline-block;
     margin-top: 10px;
     font-size: 25%;
+    visibility: hidden; /* Inicialmente invisível */
 }
+
+/* Exibição quando a habilidade não está no hover */
+.skill-card:hover::after {
+    visibility: visible; /* Torna o conteúdo visível quando o hover ocorre */
+}
+
+/* Habilidades responsivas: Exibindo 3 colunas em telas grandes */
+@media (min-width: 768px) {
+    .skill-card {
+        width: 80px; /* Ajuste de largura */
+        height: 80px; /* Ajuste de altura */
+    }
+    .skills-grid {
+        justify-content: space-between;
+    }
+}
+
+/* Habilidades responsivas: Exibindo 2 colunas em telas médias */
+@media (max-width: 1024px) and (min-width: 600px) {
+    .skill-card {
+        width: 90px; /* Ajuste de largura */
+        height: 90px; /* Ajuste de altura */
+    }
+    .skills-grid {
+        justify-content: space-around;
+    }
+}
+
+/* Habilidades responsivas: Exibindo 1 coluna em telas pequenas */
+@media (max-width: 599px) {
+    .skill-card {
+        width: 100px; /* Ajuste de largura */
+        height: 100px; /* Ajuste de altura */
+    }
+    .skills-grid {
+        justify-content: center;
+    }
+}
+
 
 /* Estilização de Projetos */
 .projeto {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    border-radius: 30px;
-    padding: 40px;
     max-width: 1200px;
-    margin: 0 auto 60px auto;
-    gap: 40px;
-    transition: transform 0.3s ease;
+    margin: 60px auto;
+    padding: 20px;
+    gap: 20px;
 }
+
+.projeto .nome-projeto {
+    font-family: 'Fira Code', monospace;
+    font-size: 32px;
+    color: #39B4A8;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.projeto-content {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.projeto-texto {
+    flex: 1;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.projeto-imagem {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+    border: 2px solid #39B4A8;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.projeto-imagem img {
+    width: 100%;
+    height: auto;
+}
+
+.projeto-imagem::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.projeto-imagem:hover::after {
+    opacity: 1;
+}
+
+.tools-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.projeto-imagem:hover .tools-icons {
+    opacity: 1;
+}
+
+.tools-icons img {
+    width: 40px;
+    height: 40px;
+}
+
 
 .projeto:hover {
     transform: scale(1.03);
