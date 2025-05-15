@@ -112,6 +112,22 @@ nav a:hover {
     margin-left: 40vh;
 }
 
+.linha-decorativa {
+    width: 350px;
+    height: 1px;
+    background-color: white;
+    margin: 0 auto 0px auto;
+    border-radius: 2px;
+}
+
+.linha-decorativa-m{
+    width: 450px;
+    height: 1px;
+    background-color: white;
+    margin: 10px auto 10px auto;
+    border-radius: 2px;
+}
+
 /* Estilização do Sobre Mim */
 .sobre {
     margin-top: 50vh;
@@ -280,7 +296,7 @@ nav a:hover {
     align-items: center;
     max-width: 1200px;
     margin: 60px auto;
-    padding: 20px;
+    padding: 0px;
     gap: 20px;
 }
 
@@ -457,6 +473,18 @@ nav a:hover {
     max-width: 100%;
     height: auto;
 }
+
+.link-projeto {
+    color: #39B4A8; /* vermelho suave, pode trocar */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.link-projeto:hover {
+    text-decoration: none;
+}
+
 
 /* Estilo para o modal */
 .modal {
